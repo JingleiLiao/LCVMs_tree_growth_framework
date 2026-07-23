@@ -1,0 +1,154 @@
+#  Code for hierarchical dependence analysis linking large-scale climate variability modes, regional climate, and tree growth
+
+## Code availability
+
+The source code used for the analyses is openly available in this GitHub repository.
+
+The repository provides the complete workflow for quantifying hierarchical relationships among large-scale climate variability modes, regional climate conditions, and tree-ring growth responses.
+## Overview
+
+This repository contains the computational workflow used to investigate hierarchical relationships among coupled large-scale climate variability modes (LCVMs), regional climate (temperature and precipitation), and tree growth (tree-ring chronology).
+
+The workflow integrates nonlinear dependence analysis, machine learning, and statistical modeling approaches, including Vine Copula models, long short-term memory (LSTM) neural networks, permutation-based contribution analysis, and multivariate statistical analysis.
+
+
+## Workflow
+
+The analytical workflow includes:
+
+1. Quantification of dependence structures among large-scale climate variability modes using Vine Copula models.
+
+2. Modeling hierarchical climate-growth interactions using long short-term memory (LSTM) neural networks.
+
+3. Evaluation of climate-growth relationships by integrating large-scale climate variability modes, regional climate conditions, and radial tree growth responses.
+
+4. Quantification of the relative contributions of large-scale climate variability modes to regional climate and tree-growth responses using permutation-based approaches.
+
+5. Evaluation of model performance and robustness using statistical metrics and permutation tests.
+
+
+## Repository structure
+LCVM_tree_growth_framework/
+
+├── R_scripts/
+│ ├── 01_data_preparation.R
+│ ├── 02_vine_copula_analysis.R
+│ ├── 03_LSTM_climate_growth_modeling.R
+│ ├── 04_permutation_analysis.R
+│ └── 05_multivariate_analysis.R
+│
+├── Functions/
+│ └── make_lstm_array.R
+│
+├── Environment/
+│ ├── R_sessionInfo.txt
+│ ├── packages.txt
+│ └── python_environment.txt
+│
+├── README.md
+└── LICENSE
+## Data availability
+
+The tree-ring datasets used in this study were generated from field measurements and are not publicly deposited due to ongoing research activities.
+
+Users can reproduce the analytical workflow using their own tree-ring datasets following the data structure described in this repository.
+The required input data structure includes:
+
+- year: calendar year
+- lon: longitude
+- lat: latitude
+- tree-ring chronology: standardized radial growth index (e.g., STD)
+- climate variables: temperature, precipitation
+- large-scale climate variability indices
+# Data files
+Data/
+*.csv
+*.xlsx
+
+# R temporary files
+.Rhistory
+.RData
+.Rproj.user/
+
+
+## Software requirements
+
+### R environment
+
+R version 4.3.3
+
+Required R packages:
+
+- Data processing:
+  - dplyr
+  - tidyr
+  - tibble
+
+- Climate dependence analysis:
+  - VineCopula
+
+- Deep learning modeling:
+  - keras
+  - tensorflow
+  - reticulate
+  - abind
+
+- Multivariate analysis:
+  - FactoMineR
+  - factoextra
+
+### Python environment
+
+Python >= 3.10
+
+Required Python packages:
+
+- tensorflow
+- keras
+- numpy
+
+
+### LSTM environment configuration
+
+The LSTM models require a working Python environment connected through the R package reticulate.
+
+Users should configure their local Python interpreter before running the LSTM scripts.
+
+Example:
+
+```r
+reticulate::use_python("your_python_path", required = TRUE)
+
+
+## Reproducibility
+
+Before running the scripts, users should modify file paths and computational environments according to their local systems.
+
+The Python path used for LSTM modeling should be specified locally rather than relying on absolute paths.
+The scripts should be executed in the following order:
+
+1. `01_data_preparation.R`
+   
+   Prepare climate, tree-ring, and spatial datasets.
+
+2. `02_vine_copula_analysis.R`
+
+   Construct dependence structures among large-scale climate variability modes.
+
+3. `03_LSTM_climate_growth_modeling.R`
+
+   Build LSTM models linking climate variability modes and tree growth.
+
+4. `04_permutation_analysis.R`
+
+   Quantify variable contributions using permutation approaches.
+
+5. `05_multivariate_analysis.R`
+
+   Perform PCA and clustering analyses.
+
+## License
+
+MIT License
+
+
